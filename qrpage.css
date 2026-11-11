@@ -1,6 +1,6 @@
 /* ============================================================
    Оформление отдельных страниц QR-кодов (qr1.html … qr6.html)
-   Каждая страница — свой акцентный цвет и свой рисунок
+   Нейтральное египетское оформление: без подсказок и спойлеров
    ============================================================ */
 
 .qp-page {
@@ -13,10 +13,8 @@
     padding: 24px 16px;
     position: relative;
     overflow-x: hidden;
-}
 
-/* Акцентный цвет задаётся inline-стилем на body: --acc */
-.qp-page {
+    /* Акцентный цвет задаётся inline-стилем на странице */
     --acc: #f5c842;
     --acc-soft: rgba(245, 200, 66, 0.16);
     --acc-glow: rgba(245, 200, 66, 0.45);
@@ -36,8 +34,8 @@
 }
 
 @keyframes qpBreathe {
-    0%, 100% { opacity: 0.75; transform: translate(-50%,-50%) scale(1); }
-    50%      { opacity: 1;    transform: translate(-50%,-50%) scale(1.14); }
+    0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.14); }
 }
 
 /* ===== Карточка ===== */
@@ -77,30 +75,45 @@
     opacity: 0.85;
 }
 
-/* ===== Шапка ===== */
+/* ===== Плашка номера кода ===== */
 
 .qp-number {
     display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
     background: var(--acc-soft);
     border: 1px solid var(--acc);
     color: var(--acc);
     font-weight: 800;
     font-size: 0.76em;
-    letter-spacing: 3px;
+    line-height: 1;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    padding: 8px 22px;
+    padding: 10px 24px;
     border-radius: 50px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    white-space: nowrap;
+    /* Фиксируем размеры, чтобы плашка не «прыгала» при анимации */
+    height: 36px;
+    box-sizing: border-box;
 }
 
-.qp-number::before { content: '◈'; font-size: 1.1em; }
+/* Номер выделяем отдельно — так он не смещается вместе с текстом */
+.qp-num {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 1.15em;
+    letter-spacing: 0;
+    color: #fff8e0;
+}
+
+/* ===== Шапка ===== */
 
 .qp-art {
-    font-size: 4.4em;
+    font-size: 4.2em;
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     filter: drop-shadow(0 10px 26px var(--acc-glow));
     animation: qpBob 3.2s ease-in-out infinite;
     display: inline-block;
@@ -108,7 +121,7 @@
 
 @keyframes qpBob {
     0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50%      { transform: translateY(-14px) rotate(2deg); }
+    50%      { transform: translateY(-12px) rotate(2deg); }
 }
 
 .qp-title {
@@ -116,122 +129,37 @@
     font-size: clamp(1.5em, 5vw, 2em);
     font-weight: 900;
     color: var(--acc);
-    margin-bottom: 6px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
     text-shadow: 0 0 26px var(--acc-glow);
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
-.qp-subtitle {
-    font-size: 0.95em;
-    color: var(--text-dim);
-    font-weight: 600;
-    margin-bottom: 22px;
-    line-height: 1.5;
-}
-
-/* ===== Рисунок (декоративная мини-иллюстрация) ===== */
+/* ===== Декоративная лента иероглифов ===== */
 
 .qp-picture {
     position: relative;
-    height: 96px;
-    margin: 0 0 20px;
+    height: 84px;
+    margin: 0 0 22px;
     border-radius: 20px;
     overflow: hidden;
     background:
         radial-gradient(120% 100% at 50% 120%, var(--acc-soft) 0%, transparent 70%),
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.2));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.2));
     border: 1px solid rgba(255, 255, 255, 0.09);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-}
-
-/* Волны (для темы Нила) */
-.qp-picture.waves::before {
-    content: '';
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 46px;
-    background:
-        radial-gradient(60px 22px at 20% 100%, var(--acc) 60%, transparent 61%),
-        radial-gradient(80px 26px at 60% 100%, var(--acc) 60%, transparent 61%),
-        radial-gradient(70px 20px at 95% 100%, var(--acc) 60%, transparent 61%);
-    opacity: 0.4;
-    animation: qpWave 3.4s ease-in-out infinite;
-}
-
-@keyframes qpWave {
-    0%, 100% { transform: translateX(-8px) scaleY(1); }
-    50%      { transform: translateX(8px) scaleY(1.25); }
-}
-
-/* Солнце (для темы времени/теней) */
-.qp-picture.sun::before {
-    content: '';
-    position: absolute;
-    width: 74px; height: 74px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fff8e0, var(--acc) 45%, transparent 70%);
-    box-shadow: 0 0 44px var(--acc-glow);
-    animation: qpSun 5s ease-in-out infinite;
-}
-
-@keyframes qpSun {
-    0%, 100% { transform: translateY(-6px) scale(1); opacity: 0.9; }
-    50%      { transform: translateY(8px) scale(1.1); opacity: 1; }
-}
-
-/* Лучи */
-.qp-picture.sun::after {
-    content: '';
-    position: absolute;
-    width: 130px; height: 130px;
-    border-radius: 50%;
-    border: 2px dashed var(--acc);
-    opacity: 0.35;
-    animation: qpSpin 18s linear infinite;
-}
-
-@keyframes qpSpin { to { transform: rotate(360deg); } }
-
-/* Пирамида (для темы гробниц) */
-.qp-picture.pyramid::before {
-    content: '';
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0; height: 0;
-    border-left: 92px solid transparent;
-    border-right: 92px solid transparent;
-    border-bottom: 116px solid var(--acc);
-    opacity: 0.35;
-    filter: drop-shadow(0 0 24px var(--acc-glow));
-}
-
-/* Клин (для темы завоевания) */
-.qp-picture.conquest::before {
-    content: '';
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--acc), transparent);
-    box-shadow: 0 -34px 0 -1px var(--acc), 0 -34px 0 1px transparent;
-    opacity: 0.4;
+    gap: 16px;
 }
 
 .qp-picture .glyph {
-    font-size: 2.4em;
+    font-size: 2.2em;
     color: var(--acc);
+    opacity: 0.75;
     text-shadow: 0 0 18px var(--acc-glow);
     animation: qpBob 3.6s ease-in-out infinite;
-    z-index: 2;
 }
-
-.qp-picture .glyph:nth-child(2) { animation-delay: 0.6s; }
-.qp-picture .glyph:nth-child(3) { animation-delay: 1.2s; }
 
 /* ===== QR-код ===== */
 
@@ -284,46 +212,10 @@
     font-size: 0.85em;
     color: var(--text-dim);
     font-weight: 600;
+    line-height: 1.6;
 }
 
 .qp-qr-hint strong { color: var(--acc); }
-
-/* ===== Буква-награда ===== */
-
-.qp-letter-box {
-    margin-top: 22px;
-    padding-top: 20px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.14);
-}
-
-.qp-letter-label {
-    font-size: 0.72em;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-dim);
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-.qp-letter {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 78px; height: 78px;
-    font-family: 'Cinzel', serif;
-    font-size: 3em;
-    font-weight: 900;
-    color: #241502;
-    background: linear-gradient(135deg, #fff6d8, var(--acc));
-    border-radius: 22px;
-    box-shadow: 0 12px 34px var(--acc-glow), inset 0 2px 0 rgba(255,255,255,0.6);
-    animation: qpLetter 3s ease-in-out infinite;
-}
-
-@keyframes qpLetter {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50%      { transform: translateY(-7px) scale(1.06); }
-}
 
 /* ===== Кнопки ===== */
 
@@ -395,10 +287,13 @@
     }
 
     .qp-title { color: #000; text-shadow: none; }
-    .qp-subtitle, .qp-qr-hint, .qp-letter-label { color: #333; }
+    .qp-subtitle, .qp-qr-hint { color: #333; }
     .qp-number { color: #000; border-color: #000; background: #f0f0f0; }
+    .qp-num { color: #000; }
     .qp-qr-wrap { box-shadow: none; }
     .qp-art { filter: none; }
+    .qp-picture { background: #fafaf6; border-color: #ddd; }
+    .qp-picture .glyph { color: #8a6d2f; }
 }
 
 /* ===== Адаптив ===== */
@@ -407,9 +302,10 @@
     .qp-card { padding: 28px 18px 24px; border-radius: 24px; }
     .qp-qr-wrap img { width: 210px; height: 210px; }
     .qp-art { font-size: 3.4em; }
-    .qp-letter { width: 66px; height: 66px; font-size: 2.4em; }
-    .qp-picture { height: 80px; }
+    .qp-picture { height: 74px; gap: 12px; }
+    .qp-picture .glyph { font-size: 1.8em; }
     .qp-btn { padding: 12px 22px; font-size: 0.9em; }
+    .qp-number { font-size: 0.7em; padding: 9px 18px; height: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

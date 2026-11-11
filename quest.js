@@ -411,7 +411,8 @@ function renderFinalPage() {
 
 /**
  * Рисует сетку из 6 QR-кодов.
- * Для каждого кода: превью, подпись с буквой, кнопки «Открыть» и «Скачать».
+ * Буквы и тематические подписи не выводятся — это спойлеры.
+ * Для каждого кода: превью, номер, кнопки «Открыть» и «Скачать».
  */
 function renderQrPage() {
     const grid = byId('qr-grid');
@@ -429,7 +430,6 @@ function renderQrPage() {
         item.innerHTML =
             '<img src="' + url + '" alt="QR-код №' + i + '" loading="lazy" crossorigin="anonymous">' +
             '<div class="qr-item-title">QR-код №' + i + '</div>' +
-            '<div class="qr-item-letter">Буква «' + SECRET_WORD[i - 1] + '»</div>' +
             '<div class="qr-item-actions">' +
                 '<a class="qr-mini-btn primary" href="qr' + i + '.html">Открыть</a>' +
                 '<a class="qr-mini-btn ghost" href="' + url + '" download="qr-' + i + '.png" target="_blank">Скачать</a>' +

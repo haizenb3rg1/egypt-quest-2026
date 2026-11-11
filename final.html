@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Секретное слово найдено! 🏆</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="final">
+
+<div class="bg-layer">
+    <div class="star-field"></div>
+    <div class="pyramid-bg"></div>
+    <div class="sand-ground"></div>
+</div>
+
+<div class="final-card">
+    <div class="trophy">🏆</div>
+    <h1 class="final-title">Поздравляем! Секретное слово найдено</h1>
+    <p class="final-desc" id="solved-counter">Найдено букв: 6 из 6</p>
+
+    <div class="final-word" id="final-word"></div>
+
+    <div class="final-desc">
+        Ты разгадал тайну пустыни! Слово <strong>ФАРАОН</strong> —<br>
+        так в Древнем Египте называли царя, который считался<br>
+        живым богом и верховным жрецом всех богов.
+    </div>
+
+    <div class="final-fact">
+        <strong>🌟 Знаешь ли ты?</strong><br>
+        Великая пирамида Хеопса — единственное из семи чудес света,
+        сохранившееся до наших дней. Её строили около 20 лет, и даже
+        сегодня учёные спорят, как именно египтяне поднимали
+        каменные блоки весом в несколько тонн.
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-gold" type="button" id="btn-restart">🔄 Играть снова</button>
+        <a class="btn btn-gold" href="index.html">🏠 На главную</a>
+    </div>
+</div>
+
+<script src="quest.js"></script>
+</body>
+</html>

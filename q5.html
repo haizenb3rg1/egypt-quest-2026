@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Египетский квест — вопрос</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="question" data-step="5">
+
+<div class="bg-layer">
+    <div class="star-field"></div>
+    <div class="pyramid-bg"></div>
+    <div class="sand-ground"></div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="qr-badge" id="qr-badge">QR-код</div>
+        <div class="card-icon" id="card-icon">🏺</div>
+        <div class="card-title" id="card-title">Древний Египет</div>
+    </div>
+
+    <div class="question-box">
+        <div class="question-label">Вопрос</div>
+        <div class="question-text" id="question-text">Загружаем вопрос…</div>
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="fact-box">
+        <strong>🌟 Знаешь ли ты?</strong><br>
+        <span id="fact-text"></span>
+    </div>
+</div>
+
+<!-- Оверлей: правильный ответ -->
+<div class="result-overlay" id="overlay-correct">
+    <div class="result-card">
+        <div class="result-icon-big">🌟</div>
+        <div class="result-title">Верно!</div>
+        <div class="result-desc">Ты нашёл букву секретного слова!</div>
+        <div class="letter-reward" id="reward-letter">?</div>
+        <div class="word-progress"></div>
+        <div class="result-desc" style="font-size:0.9em;margin-bottom:16px;">
+            Отлично! Ищи следующий QR-код на стенде 🏺
+        </div>
+        <button class="btn btn-gold" type="button" data-close-overlay>Продолжить</button>
+    </div>
+</div>
+
+<!-- Оверлей: неверный ответ -->
+<div class="result-overlay" id="overlay-wrong">
+    <div class="result-card">
+        <div class="result-icon-big">🤔</div>
+        <div class="result-title wrong">Подумай ещё!</div>
+        <div class="result-desc" id="hint-text"></div>
+        <button class="btn btn-gold" type="button" data-close-overlay>Попробовать снова</button>
+    </div>
+</div>
+
+<script src="quest.js"></script>
+</body>
+</html>

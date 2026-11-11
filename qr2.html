@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-код №2 — Живой бог | Квест «Древний Египет»</title>
+    <meta name="description" content="QR-код №2 квеста по истории Древнего Египта для 5 класса. Отсканируйте камерой телефона.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="qrpage.css">
+    <style>
+        :root {
+            --acc: #f5c842;
+            --acc-soft: rgba(245, 200, 66, 0.16);
+            --acc-glow: rgba(245, 200, 66, 0.45);
+        }
+    </style>
+</head>
+<body class="qp-page" data-page="qr-single" data-qr="2">
+    <div class="bg-layer">
+        <div class="star-field" id="star-field"></div>
+        <div class="pyramid-bg"><div class="sand-ground"></div></div>
+    </div>
+
+    <div class="qp-card">
+        <div class="qp-number">QR-код №2</div>
+
+        <div class="qp-art">👑</div>
+
+        <h1 class="qp-title">Живой бог</h1>
+        <p class="qp-subtitle">Правитель, перед которым склонялись</p>
+
+        <div class="qp-picture">
+                <span class="glyph">𓋹</span>
+                <span class="glyph">𓊨</span>
+                <span class="glyph">𓌀</span>
+        </div>
+
+        <div class="qp-qr-wrap qp-corners">
+            <img id="qr-image" alt="QR-код №2" width="260" height="260">
+        </div>
+
+        <p class="qp-qr-hint">
+            Наведи камеру телефона на код —<br>откроется вопрос с буквой <strong>«А»</strong>
+        </p>
+
+        <div class="qp-letter-box">
+            <div class="qp-letter-label">За этот код ты получишь букву</div>
+            <div class="qp-letter">А</div>
+        </div>
+
+        <div class="qp-actions">
+            <button type="button" class="qp-btn qp-btn-primary" id="btn-print">🖨️ Распечатать</button>
+            <a class="qp-btn qp-btn-ghost" href="qr.html">← Все коды</a>
+        </div>
+    </div>
+
+    <script src="quest.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Ссылка на страницу соответствующего вопроса
+            var n = 2;
+            var base = window.location.href.replace(/qr\d+\.html.*$/, '');
+            var target = base + 'q' + n + '.html';
+            var img = document.getElementById('qr-image');
+            img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=520x520&margin=10&data=' +
+                encodeURIComponent(target);
+            img.setAttribute('data-target', target);
+
+            // Кнопка печати
+            var btn = document.getElementById('btn-print');
+            if (btn) {
+                btn.addEventListener('click', function () { window.print(); });
+            }
+        });
+    </script>
+</body>
+</html>

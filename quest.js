@@ -409,6 +409,10 @@ function renderFinalPage() {
 
 /* ---------- Страница QR-кодов ---------- */
 
+/**
+ * Рисует сетку из 6 QR-кодов.
+ * Для каждого кода: превью, подпись с буквой, кнопки «Открыть» и «Скачать».
+ */
 function renderQrPage() {
     const grid = byId('qr-grid');
     if (!grid) return;
@@ -418,13 +422,18 @@ function renderQrPage() {
 
     for (let i = 1; i <= WORD_LENGTH; i++) {
         const target = base + 'q' + i + '.html';
-        const url = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=' + encodeURIComponent(target);
+        const url = 'https://api.qrserver.com/v1/create-qr-code/?size=380x380&margin=10&data=' + encodeURIComponent(target);
 
         const item = document.createElement('div');
         item.className = 'qr-item';
         item.innerHTML =
-            '<img src="' + url + '" alt="QR-код №' + i + '" loading="lazy">' +
-            '<div class="qr-item-title">QR-код №' + i + '</div>';
+            '<img src="' + url + '" alt="QR-код №' + i + '" loading="lazy" crossorigin="anonymous">' +
+            '<div class="qr-item-title">QR-код №' + i + '</div>' +
+            '<div class="qr-item-letter">Буква «' + SECRET_WORD[i - 1] + '»</div>' +
+            '<div class="qr-item-actions">' +
+                '<a class="qr-mini-btn primary" href="qr' + i + '.html">Открыть</a>' +
+                '<a class="qr-mini-btn ghost" href="' + url + '" download="qr-' + i + '.png" target="_blank">Скачать</a>' +
+            '</div>';
         grid.appendChild(item);
     }
 }

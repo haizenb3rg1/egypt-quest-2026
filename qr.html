@@ -1,31 +1,113 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QR-коды для стенда 🖨️</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-коды для стенда | Квест «Древний Египет»</title>
+    <meta name="description" content="Все QR-коды квеста по истории Древнего Египта для 5 класса: скачайте или распечатайте каждый отдельно.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="qrpage.css">
+    <style>
+        .qr-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(245, 200, 66, 0.22);
+            border-radius: 22px;
+            padding: 20px 16px 16px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-align: center;
+        }
+        .qr-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55), 0 0 40px rgba(245, 200, 66, 0.18);
+        }
+        .qr-item img {
+            width: 100%;
+            max-width: 190px;
+            height: auto;
+            display: block;
+            margin: 0 auto 12px;
+            border-radius: 12px;
+            background: #fff;
+            padding: 8px;
+        }
+        .qr-item-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            color: var(--gold);
+            font-size: 1.05em;
+            margin-bottom: 2px;
+        }
+        .qr-item-letter {
+            font-size: 0.85em;
+            color: var(--text-dim);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .qr-item-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .qr-mini-btn {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.78em;
+            font-weight: 800;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-family: 'Manrope', sans-serif;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .qr-mini-btn.primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #2a1a05;
+        }
+        .qr-mini-btn.primary:hover { transform: translateY(-2px); }
+        .qr-mini-btn.ghost {
+            background: transparent;
+            border: 1px solid rgba(245, 200, 66, 0.3);
+            color: var(--gold);
+        }
+        .qr-mini-btn.ghost:hover { background: rgba(245, 200, 66, 0.1); transform: translateY(-2px); }
+        .qr-hint-line {
+            font-size: 0.9em;
+            color: var(--text-dim);
+            margin-top: 22px;
+            line-height: 1.6;
+        }
+        .qr-hint-line strong { color: var(--gold); }
+    </style>
 </head>
 <body data-page="qr">
-
-<div class="bg-layer">
-    <div class="star-field"></div>
-    <div class="pyramid-bg"></div>
-    <div class="sand-ground"></div>
-</div>
-
-<div class="qr-card">
-    <div class="welcome-icon">🖨️</div>
-    <h1 class="welcome-title" style="font-size:1.9em;">QR-коды для стенда</h1>
-    <p class="welcome-subtitle">Распечатайте (Ctrl+P) и разместите на стенде</p>
-
-    <div class="qr-grid" id="qr-grid"></div>
-
-    <div style="margin-top:26px;">
-        <a class="btn btn-ghost" href="index.html">← На главную</a>
+    <div class="bg-layer">
+        <div class="star-field" id="star-field"></div>
+        <div class="pyramid-bg"><div class="sand-ground"></div></div>
     </div>
-</div>
 
-<script src="quest.js"></script>
+    <div class="qr-card">
+        <div class="welcome-icon">🔱</div>
+        <h1 class="welcome-title" style="font-size:1.9em;">QR-коды для стенда</h1>
+        <p class="welcome-subtitle">6 кодов — 6 букв секретного слова</p>
+
+        <div class="qr-grid" id="qr-grid"></div>
+
+        <p class="qr-hint-line">
+            Каждый код можно открыть отдельно: <strong>нажмите «Открыть»</strong> — выйдет красивая
+            страница с этим кодом, которую можно распечатать или сохранить картинкой.
+        </p>
+
+        <div style="margin-top:26px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a class="btn btn-ghost" href="index.html">← На главную</a>
+        </div>
+    </div>
+
+    <script src="quest.js"></script>
 </body>
 </html>

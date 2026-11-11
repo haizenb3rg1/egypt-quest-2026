@@ -374,17 +374,40 @@ body::before {
 }
 
 .word-cell {
-    width: 40px; height: 40px;
+    width: 44px; height: 46px;
     border: 1px solid rgba(245, 200, 66, 0.35);
     border-radius: 11px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1px;
     font-family: 'Cinzel', serif;
     font-size: 1.35em;
     font-weight: 900;
     color: var(--gold);
     background: rgba(255, 255, 255, 0.04);
+    position: relative;
+}
+
+/* Маленький номер — показывает порядок буквы в слове, но не подсказывает её */
+.word-cell-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.42em;
+    font-weight: 800;
+    opacity: 0.55;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+.word-cell-letter {
+    line-height: 1;
+}
+
+/* Заполненная ячейка: номер становится тёмным */
+.word-cell.filled .word-cell-num {
+    opacity: 0.55;
+    color: #2a1a05;
 }
 
 .word-cell.filled {
@@ -648,7 +671,7 @@ body::before {
     .answer-btn { font-size: 0.95em; padding: 14px 14px; }
     .result-card { padding: 34px 22px 30px; }
     .letter-reward { width: 84px; height: 84px; line-height: 84px; font-size: 3.4em; }
-    .word-cell { width: 34px; height: 34px; font-size: 1.15em; }
+    .word-cell { width: 36px; height: 38px; font-size: 1.15em; }
     .final-cell { width: 46px; height: 46px; font-size: 1.5em; }
     .steps-list { padding-left: 50px; }
     .card-icon, .welcome-icon, .trophy { font-size: 3.6em; }
@@ -656,7 +679,7 @@ body::before {
 
 @media (max-width: 360px) {
     .word-progress { gap: 4px; }
-    .word-cell { width: 30px; height: 30px; font-size: 1em; }
+    .word-cell { width: 32px; height: 34px; font-size: 1em; }
     .final-word { gap: 5px; }
     .final-cell { width: 40px; height: 40px; font-size: 1.3em; }
 }
